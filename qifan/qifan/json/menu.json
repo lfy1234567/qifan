@@ -1,0 +1,73 @@
+{
+  "code": 0
+  ,"msg": ""
+  ,"count": 3000000
+  ,"data": [
+    {
+    "name": "用户管理",
+    "left_icon": "&#xe6b8;",
+    "right_icon": "&#xe697;",
+    "url": "/insidePage/userPages/user-list.html"
+  },
+  {
+    "name": "字段模板管理",
+    "left_icon": "&#xe6b5;",
+    "right_icon": "&#xe697;",
+    "url": "/insidePage/templatePages/template-list.html"
+  },
+  {
+    "name": "权限管理",
+    "left_icon": "&#xe6e5;",
+    "right_icon": "&#xe697;",
+    "url": "/insidePage/jurisdictionPages/jurisdiction-list.html"
+  },
+  {
+    "name": "供应商管理",
+    "left_icon": "&#xe726;",
+    "right_icon": "&#xe697;",
+    "url": "/insidePage/supplierPages/supplier-list.html"
+  },
+
+  {
+    "name": "物料分类管理",
+    "left_icon": "&#xe6b8;",
+    "right_icon": "&#xe697;",
+    "url": "/insidePage/materialPages/MaterialClassification-list.html"
+  },
+  {
+    "name": "物料管理",
+    "left_icon": "&#xe75c;",
+    "right_icon": "&#xe697;",
+    "url": "/insidePage/materialPages/Material-list.html"
+  },
+  {
+    "name": "采购管理",
+    "left_icon": "&#xe812;",
+    "right_icon": "&#xe697;",
+    "children": [
+      {
+        "name": "物料申请",
+        "left_icon": "&#xe6a7;",
+        "url": "/insidePage/purchasePages/purchase-list.html"
+      },
+      {
+        "name": "物料入库",
+        "left_icon": "&#xe6a7;",
+        "url": "/insidePage/purchasePages/purchase-list.html"
+      }
+    ]
+  },
+  {
+    "name": "报表统计",
+    "left_icon": "&#xe6fc;",
+    "right_icon": "&#xe697;",
+    "url": "/insidePage/reportFormPages/reportForm.html"
+  },
+  {
+    "name": "404展示页面",
+    "left_icon": "&#xe6fc;",
+    "right_icon": "&#xe697;",
+    "url": ""
+  }
+]
+}  
