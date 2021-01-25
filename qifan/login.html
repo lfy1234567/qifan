@@ -1,0 +1,84 @@
+<!doctype html>
+<html class="x-admin-sm">
+
+<head>
+  <meta charset="UTF-8">
+  <title>后台登录-X-admin2.2</title>
+  <meta name="renderer" content="webkit|ie-comp|ie-stand">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+    content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="stylesheet" href="./css/login.css">
+  <!-- <link rel="stylesheet" href="./css/xadmin.css"> -->
+  <script src="/common/common.js"></script>
+</head>
+
+<body class="login-bg">
+
+  <div class="login layui-anim layui-anim-up" id="app" v-cloak>
+    <div class="message" style="text-align: center;font-size: 25px;padding-right: 40px;">启帆系统登录</div>
+    <div id="darkbannerwrap"></div>
+    <div method="post" class="layui-form">
+      <input placeholder="用户名" lay-verify="username" type="text" class="layui-input" v-model="entity.username">
+      <hr class="hr15">
+      <input placeholder="密码" lay-verify="password" type="password" class="layui-input" v-model="entity.password">
+      <hr class="hr15">
+      <input value="登录"  style="width:100%;" type="submit" lay-submit lay-filter="login" @click="submit()">
+      <hr class="hr20">
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        entity: {
+          username: "qifan",
+          password: "1",
+        }
+      },
+      watch: {},
+      filters: {},
+      beforeCreate() { },
+      created() {
+        QiFan.initLayui();
+      },
+      mounted() { },
+      updated() { this.$nextTick(() => { }) },
+      methods: {
+        submit: function () {
+          form.verify({ //验证表单
+            username: function (d) {
+              if (d == "") { return "账号不能为空" }
+              if (d.indexOf(' ') != -1) { return "账号不能输入空格" }
+            },
+            password: function (d) {
+              if (d == "") { return "密码不能为空" }
+              if (d.indexOf(' ') != -1) { return "密码不能输入空格" }
+            }
+          });
+          form.on('submit(login)', (data) => {  //提交表单
+            QiFan.onLoading();
+            axiosPost("/login", this.entity).then((response) => {
+              if (response.data.retcode == 200) {
+                setTimeout(() => {
+                  QiFan.setToken(response.data.result.token)
+                  localStorage["userinfo"] = JSON.stringify(response.data.result.user)
+                  QiFan.offLoading();
+                  location.replace('/index.html');
+                }, 2000);
+                return false
+              }
+              layer.msg(response.data.retmsg, { icon: 2 });
+              QiFan.offLoading();
+            })
+            return false;
+          });
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>
